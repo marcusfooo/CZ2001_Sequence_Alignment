@@ -2,4 +2,3 @@
 CZ2001_Sequence Alignment
 Group Project
 hello
-ffsfs
