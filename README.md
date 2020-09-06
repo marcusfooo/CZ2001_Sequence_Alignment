@@ -11,3 +11,7 @@ Users can input
 
 Kindly create your own classes for the individual algorithm. The classes should follow this API and be imported in the Main.java file:
 algo(query, target)
+
+If you encounter an issue, do the following steps:
+- File > Switch Workplace > Other > The repo you cloned
+- Then right click on your repo in eclipse > Build Path > Configure Build Path > Libraries > Remove yrc-proteomics > Add External Jar > locate libs/trc-proteomics and add to ModulePath
