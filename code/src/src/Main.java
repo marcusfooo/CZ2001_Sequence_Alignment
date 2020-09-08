@@ -11,7 +11,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		
-		
+		ArrayList<Integer> positions = new ArrayList<Integer>();
 		ArrayList<Integer> menu = new ArrayList<Integer>();
 		menu.add(1);
 		menu.add(2);
@@ -41,6 +41,11 @@ public class Main {
 		case 1:
 			System.out.println("Run Algo 1");
 			System.out.printf("Your query is %s\n", query);
+			positions = KMP.KMPSearch(query, target);
+			System.out.println("The positions of the queried strings are:");
+			for(Integer pos : positions) {
+				System.out.print(pos + " ");
+			}
 			break;
 		case 2:
 			System.out.println("Run Algo 2");
