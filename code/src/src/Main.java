@@ -39,7 +39,6 @@ public class Main {
 		final long startTime = System.currentTimeMillis(); 
 		switch(choice) {
 		case 1:
-			//CACAACAA
 			System.out.println("Run Algo 1");
 			System.out.printf("Your query is %s\n", query);
 			
