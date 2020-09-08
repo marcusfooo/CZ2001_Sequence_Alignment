@@ -110,7 +110,7 @@ public class Main {
 			try {
 				System.out.println("Enter your Target file location");
 				String user_file = sc.nextLine();
-				String file_path =  "data/" + user_file + ".fasta";
+				String file_path =  "data/" + user_file;
 				FASTAFileParser parser = FASTAFileParserFactory.getInstance().getFASTAFileParser(new File(file_path));
 				for ( FASTAEntry entry = parser.getNextEntry(); entry != null;) {						
 					System.out.println( "Found " + entry.getHeaders().size() + " headers for this FASTA entry." );
