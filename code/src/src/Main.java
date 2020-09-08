@@ -39,13 +39,17 @@ public class Main {
 		final long startTime = System.currentTimeMillis(); 
 		switch(choice) {
 		case 1:
+			//CACAACAA
 			System.out.println("Run Algo 1");
 			System.out.printf("Your query is %s\n", query);
+			
 			positions = KMP.KMPSearch(query, target);
 			System.out.println("The positions of the queried strings are:");
+			
 			for(Integer pos : positions) {
 				System.out.print(pos + " ");
 			}
+			System.out.println("");
 			break;
 		case 2:
 			System.out.println("Run Algo 2");

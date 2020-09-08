@@ -1,8 +1,32 @@
 package src;
 
-import jav.util.ArrayList;
+import java.util.*;
 
-public class KMP {
+public class KMP{
+	
+	/*public static void main(String[] args) {
+		
+		ArrayList<Integer> positions = new ArrayList<Integer>();
+			
+		String target = "ABABDABACDABABCABAB"; 
+        String query = "ABABCABAB"; 
+        
+        int x = query.length();
+        int[] nums = new int[x];
+         
+        preprocess(query, x, nums);
+        
+        for (int j = 0;j <nums.length; j++) {
+        	System.out.println(nums[j]);
+        }
+        
+        positions = KMP.KMPSearch(query, target);
+        
+        for(Integer pos : positions) {
+			System.out.print(pos + " ");
+		}
+		
+	}*/
 	
 	public static ArrayList<Integer> KMPSearch(String query, String target) {
 		int x = query.length();
@@ -15,30 +39,32 @@ public class KMP {
 		int[] nums = new int[x];
 		
 		preprocess(query, x, nums);
+		System.out.println("hihi");
 		
-		while (j < y) {
-			if (query.charAt(i) == target.charAt(j)) {
+		while (i < y) {
+			if (query.charAt(j) == target.charAt(i)) {
 				i++;
 				j++;
 			}
-			if (i == x) {
+			if (j == x) {
 				//Entire substring has been found, add index position to indexpos
-				indexpos.add(j-i+2);
-				i = nums[i - 1];
-			} else if (j < y && query.charAt(i) != query.charAt(j)){
-				if (i != 0) {
-					i = nums[i - 1];
+				indexpos.add(i - j + 1);
+				j = nums[j - 1];
+			} else if (i < y && query.charAt(j) != target.charAt(i)){
+				if (j != 0) {
+					j = nums[j - 1];
 				} else {
-					j++;
+					i = i + 1;
 				}
 			}
 		}
+		System.out.println("please work");
 		
 		return indexpos;
 		
 	}
 	
-	public void preprocess(String query, int x, int nums[]) {
+	public static void preprocess(String query, int x, int nums[]) {
 		int i, mis, j;
 		// initializing the array nums with 0's
 		for (j=0; j<x; j++) {
@@ -53,7 +79,7 @@ public class KMP {
 	    
 	    while (i < x) {
 	        // prefix = suffix till mis-1
-	        if (nums[i] == nums[mis]) {
+	        if (query.charAt(i) == query.charAt(mis)) {
 	            mis += 1;
 	            nums[i] = mis;
 	            i += 1;
@@ -62,7 +88,7 @@ public class KMP {
 	        // when there is a mismatch,
 	        // we will check the index of previous
 	        // possible prefix.
-	        else if (nums[i] != nums[mis] & mis != 0) {
+	        else if (query.charAt(i) != query.charAt(mis) & mis != 0) {
 	            //we will not increment i here.
 	            mis = nums[mis-1];
 	        }
