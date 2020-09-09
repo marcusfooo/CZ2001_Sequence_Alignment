@@ -65,6 +65,7 @@ public class Double_Hash {
         final long endTime = System.nanoTime(); // End timer
         final long elapsedTime = (endTime - startTime)/1000;
 		System.out.printf("Time taken: %d microseconds\n", elapsedTime);
+		
         return indexpos;
 	}
 	
