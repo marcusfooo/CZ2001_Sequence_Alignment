@@ -34,9 +34,7 @@ public class Main {
 		
 		String query = userQuery();		
 		String target = userTarget();
-		
-		// Start timer
-		 
+				 
 		switch(choice) {
 		case 1:
 			System.out.println("Run Algo 1");
@@ -54,7 +52,7 @@ public class Main {
 			System.out.println("Run Algo 2");
 			System.out.printf("Your query is %s\n", query);
 			
-			positions = Double_Hash.DHSearch(query, target);
+			positions = Double_Hash.DHSearch(query, target, 0);
 			System.out.println("The positions of the queried strings are:");
 			
 			for(Integer pos : positions) {
