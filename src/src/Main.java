@@ -54,7 +54,7 @@ public class Main {
 				System.out.println("Run Algo 2");
 				System.out.printf("Your query is %s\n", query);
 				
-				positions = Double_Hash.DHSearch(query, target, 0);
+				positions = Super_Hash.search(query, target, 3);
 				System.out.println("The positions of the queried strings are:");
 				
 				for(Integer pos : positions) {
