@@ -39,8 +39,8 @@ public class KMP{
 		int[] nums = new int[x];
 		
 		preprocess(query, x, nums);
-		System.out.println("hihi");
 		
+		final long startTime = System.nanoTime(); // Start timer
 		while (i < y) {
 			if (query.charAt(j) == target.charAt(i)) {
 				i++;
@@ -58,8 +58,10 @@ public class KMP{
 				}
 			}
 		}
-		System.out.println("please work");
 		
+		final long endTime = System.nanoTime(); // End timer
+		final long elapsedTime = (endTime - startTime)/1000;
+		System.out.printf("Time taken: %d microseconds\n", elapsedTime);		
 		return indexpos;
 		
 	}

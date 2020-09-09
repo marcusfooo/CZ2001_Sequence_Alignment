@@ -1,15 +1,18 @@
 package src;
 
+import java.util.ArrayList;
+
 public class Double_Hash {
 
 	// http://www.cs.csi.cuny.edu/~zhangx/papers/P_2019_LISAT_Bicer_Zhang.pdf
-	static int search(String query, String target) {
+	public static ArrayList<Integer> DHSearch(String query, String target) {
 		int M = query.length(); 
         int N = target.length(); 
         int M1, skip; 
         int i = 0;
         int flag = 0;
         long thash1, thash2;
+        ArrayList<Integer> indexpos = new ArrayList<Integer>();
             
         // Half hashing
         M1 = M/2;
@@ -18,6 +21,7 @@ public class Double_Hash {
         long qhash2 = hash(query, M1, M);
         int[] BadMatchTable = BMT(query, M);
 
+        final long startTime = System.nanoTime(); // Start timer
         while (i<=N-M) {
         	skip = 1;
     		if(query.charAt(M-1)==target.charAt(i+M-1)) {
@@ -25,10 +29,8 @@ public class Double_Hash {
     			if (thash1 == qhash1) {
     				thash2 = hash(target, i+M1 , i+M);				
     				if (thash2 == qhash2) {
-    					System.out.printf("Position at %d\n",i);
-    					System.out.println("SUCCESS!");
     					flag = 1;
-    					return i;
+    					indexpos.add(i+1); //Add 1 to index for position
     				}
     			}
     		} 
@@ -44,14 +46,18 @@ public class Double_Hash {
     				
     		i += skip;
         }
+        
         if (flag==0) {
         	System.out.println("Not found");
         }
         
-        return -1;
+        final long endTime = System.nanoTime(); // End timer
+        final long elapsedTime = (endTime - startTime)/1000;
+		System.out.printf("Time taken: %d microseconds\n", elapsedTime);
+        return indexpos;
 	}
 	
-	public static int[] BMT(String query, int M) {
+	private static int[] BMT(String query, int M) {
 		// Returns Bad Match Table
 		// Value = length of substring – index of each letter in the substring – 1
 		int[] BadMatchTable = new int[M];
@@ -63,14 +69,14 @@ public class Double_Hash {
 		
 	}
 	
-	public static long hash(String query, int beginIndex, int endIndex) {
+	private static long hash(String query, int beginIndex, int endIndex) {
 		// Returns hash for half a window
 		String query_temp = query.substring(beginIndex, endIndex);
 		return BPHash(query_temp);
 	}
 	
 	// From https://github.com/ArashPartow/hash/blob/master/GeneralHashFunctions_-_Java/GeneralHashFunctionLibrary.java
-	public static long BPHash(String str)
+	private static long BPHash(String str)
 	   {
 	      long hash = 0;
 
@@ -81,12 +87,5 @@ public class Double_Hash {
 
 	      return hash;
 	   }
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		String target = "ATCGUATCGUATCGUATCGUATCGUATCGUATCGUATCGUTTTATACCTTCCAATCGUATCGUATCGUATCGUATCGUATCGUATCGUATCGUATCGUATCGUATCGUATCGUTTTATACCTTCCA"; 
-        String query = "TTTATACCTTCCA"; 
-        search(query, target); 
-	}
 
 }
