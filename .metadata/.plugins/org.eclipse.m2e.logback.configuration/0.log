@@ -4728,3 +4728,6 @@ Caused by: java.io.FileNotFoundException: C:\Users\Marcus\Desktop\Projects\CZ200
 	at org.eclipse.m2e.core.internal.index.nexus.NexusIndexManager.identify(NexusIndexManager.java:1263) ~[na:na]
 	at org.eclipse.m2e.core.internal.index.nexus.NexusIndexManager.identify(NexusIndexManager.java:301) ~[na:na]
 	... 64 common frames omitted
+2020-09-09 19:14:28,653 [Worker-3: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2020-09-09 19:17:04,608 [Worker-5: Pulling origin from git@github.com:marcusfooo/CZ2001_Sequence_Alignment] INFO  o.a.s.c.u.s.e.EdDSASecurityProviderRegistrar - getOrCreateProvider(EdDSA) created instance of net.i2p.crypto.eddsa.EdDSASecurityProvider
+2020-09-09 19:17:04,660 [Worker-5: Pulling origin from git@github.com:marcusfooo/CZ2001_Sequence_Alignment] INFO  o.a.s.c.i.DefaultIoServiceFactoryFactory - No detected/configured IoServiceFactoryFactory using Nio2ServiceFactoryFactory

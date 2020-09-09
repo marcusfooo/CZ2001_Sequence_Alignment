@@ -8736,3 +8736,120 @@ java.io.FileNotFoundException: C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequenc
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:657)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:594)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1447)
+
+!ENTRY org.eclipse.egit.core 4 0 2020-09-09 19:17:19.177
+!MESSAGE Pulling 1 repository
+!SUBENTRY 1 org.eclipse.egit.core 4 0 2020-09-09 19:17:19.177
+!MESSAGE Exception caught during execution of merge command. java.io.IOException: Could not rename file C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log11861549131220258757.tmp to C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+!STACK 0
+org.eclipse.jgit.api.errors.JGitInternalException: Exception caught during execution of merge command. java.io.IOException: Could not rename file C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log11861549131220258757.tmp to C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.api.MergeCommand.call(MergeCommand.java:403)
+	at org.eclipse.jgit.api.PullCommand.call(PullCommand.java:367)
+	at org.eclipse.egit.core.op.PullOperation$PullJob.run(PullOperation.java:256)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.IOException: Could not rename file C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log11861549131220258757.tmp to C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkoutEntry(DirCacheCheckout.java:1510)
+	at org.eclipse.jgit.merge.ResolveMerger.checkout(ResolveMerger.java:386)
+	at org.eclipse.jgit.merge.ResolveMerger.mergeTrees(ResolveMerger.java:1267)
+	at org.eclipse.jgit.merge.ResolveMerger.mergeImpl(ResolveMerger.java:357)
+	at org.eclipse.jgit.merge.Merger.merge(Merger.java:233)
+	at org.eclipse.jgit.merge.Merger.merge(Merger.java:186)
+	at org.eclipse.jgit.merge.ThreeWayMerger.merge(ThreeWayMerger.java:96)
+	at org.eclipse.jgit.api.MergeCommand.call(MergeCommand.java:326)
+	... 3 more
+Caused by: java.io.IOException: Could not rename file C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log11861549131220258757.tmp to C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.util.FileUtils.rename(FileUtils.java:322)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkoutEntry(DirCacheCheckout.java:1508)
+	... 10 more
+
+!ENTRY org.eclipse.egit.ui 4 0 2020-09-09 19:20:21.478
+!MESSAGE Stash create error
+!STACK 1
+org.eclipse.team.core.TeamException: Exception caught during execution of reset command. Could not rename file C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log10558795870928072816.tmp to C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.egit.core.op.StashCreateOperation$1.run(StashCreateOperation.java:99)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2292)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2317)
+	at org.eclipse.egit.core.op.StashCreateOperation.execute(StashCreateOperation.java:108)
+	at org.eclipse.egit.ui.internal.stash.StashCreateUI$1.runInWorkspace(StashCreateUI.java:82)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:42)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.IOException: Could not rename file C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log10558795870928072816.tmp to C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkoutEntry(DirCacheCheckout.java:1510)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:563)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:467)
+	at org.eclipse.jgit.api.ResetCommand.checkoutIndex(ResetCommand.java:414)
+	at org.eclipse.jgit.api.ResetCommand.call(ResetCommand.java:182)
+	at org.eclipse.jgit.api.StashCreateCommand.call(StashCreateCommand.java:367)
+	at org.eclipse.egit.core.op.StashCreateOperation$1.run(StashCreateOperation.java:97)
+	... 6 more
+Caused by: java.io.IOException: Could not rename file C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log10558795870928072816.tmp to C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.util.FileUtils.rename(FileUtils.java:322)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkoutEntry(DirCacheCheckout.java:1508)
+	... 12 more
+!SUBENTRY 1 org.eclipse.team.core 4 0 2020-09-09 19:20:21.478
+!MESSAGE Exception caught during execution of reset command. Could not rename file C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log10558795870928072816.tmp to C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+!STACK 0
+java.io.IOException: Could not rename file C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log10558795870928072816.tmp to C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkoutEntry(DirCacheCheckout.java:1510)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:563)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:467)
+	at org.eclipse.jgit.api.ResetCommand.checkoutIndex(ResetCommand.java:414)
+	at org.eclipse.jgit.api.ResetCommand.call(ResetCommand.java:182)
+	at org.eclipse.jgit.api.StashCreateCommand.call(StashCreateCommand.java:367)
+	at org.eclipse.egit.core.op.StashCreateOperation$1.run(StashCreateOperation.java:97)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2292)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2317)
+	at org.eclipse.egit.core.op.StashCreateOperation.execute(StashCreateOperation.java:108)
+	at org.eclipse.egit.ui.internal.stash.StashCreateUI$1.runInWorkspace(StashCreateUI.java:82)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:42)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.IOException: Could not rename file C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log10558795870928072816.tmp to C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.util.FileUtils.rename(FileUtils.java:322)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkoutEntry(DirCacheCheckout.java:1508)
+	... 12 more
+
+!ENTRY org.eclipse.egit.ui 4 0 2020-09-09 19:20:46.425
+!MESSAGE Stash create error
+!STACK 1
+org.eclipse.team.core.TeamException: Exception caught during execution of reset command. Could not rename file C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log7989017527350710329.tmp to C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.egit.core.op.StashCreateOperation$1.run(StashCreateOperation.java:99)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2292)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2317)
+	at org.eclipse.egit.core.op.StashCreateOperation.execute(StashCreateOperation.java:108)
+	at org.eclipse.egit.ui.internal.stash.StashCreateUI$1.runInWorkspace(StashCreateUI.java:82)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:42)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.IOException: Could not rename file C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log7989017527350710329.tmp to C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkoutEntry(DirCacheCheckout.java:1510)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:563)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:467)
+	at org.eclipse.jgit.api.ResetCommand.checkoutIndex(ResetCommand.java:414)
+	at org.eclipse.jgit.api.ResetCommand.call(ResetCommand.java:182)
+	at org.eclipse.jgit.api.StashCreateCommand.call(StashCreateCommand.java:367)
+	at org.eclipse.egit.core.op.StashCreateOperation$1.run(StashCreateOperation.java:97)
+	... 6 more
+Caused by: java.io.IOException: Could not rename file C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log7989017527350710329.tmp to C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.util.FileUtils.rename(FileUtils.java:322)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkoutEntry(DirCacheCheckout.java:1508)
+	... 12 more
+!SUBENTRY 1 org.eclipse.team.core 4 0 2020-09-09 19:20:46.425
+!MESSAGE Exception caught during execution of reset command. Could not rename file C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log7989017527350710329.tmp to C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+!STACK 0
+java.io.IOException: Could not rename file C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log7989017527350710329.tmp to C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkoutEntry(DirCacheCheckout.java:1510)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.doCheckout(DirCacheCheckout.java:563)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkout(DirCacheCheckout.java:467)
+	at org.eclipse.jgit.api.ResetCommand.checkoutIndex(ResetCommand.java:414)
+	at org.eclipse.jgit.api.ResetCommand.call(ResetCommand.java:182)
+	at org.eclipse.jgit.api.StashCreateCommand.call(StashCreateCommand.java:367)
+	at org.eclipse.egit.core.op.StashCreateOperation$1.run(StashCreateOperation.java:97)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2292)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2317)
+	at org.eclipse.egit.core.op.StashCreateOperation.execute(StashCreateOperation.java:108)
+	at org.eclipse.egit.ui.internal.stash.StashCreateUI$1.runInWorkspace(StashCreateUI.java:82)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:42)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.io.IOException: Could not rename file C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\._0.log7989017527350710329.tmp to C:\Users\Marcus\Desktop\Projects\CZ2001 - Sequence Alignment\.metadata\.plugins\org.eclipse.m2e.logback.configuration\0.log
+	at org.eclipse.jgit.util.FileUtils.rename(FileUtils.java:322)
+	at org.eclipse.jgit.dircache.DirCacheCheckout.checkoutEntry(DirCacheCheckout.java:1508)
+	... 12 more
