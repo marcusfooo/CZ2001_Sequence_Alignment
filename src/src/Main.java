@@ -63,6 +63,14 @@ public class Main {
 		case 3:
 			System.out.println("Run Brute Force");
 			System.out.printf("Your query is %s\n", query);
+			
+			positions = BruteForce.BFSearch(query, target);
+			System.out.println("The positions of the queried strings are:");
+			
+			for(Integer pos : positions) {
+				System.out.print(pos + " ");
+			}
+			System.out.println("");
 			break;
 		}
 		
