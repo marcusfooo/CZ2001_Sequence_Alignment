@@ -16,6 +16,7 @@ public class Main {
 		menu.add(1);
 		menu.add(2);
 		menu.add(3);
+		menu.add(4);
 		
 		
 		// User Menu
@@ -23,7 +24,7 @@ public class Main {
 			int choice = 0;
 			while(!menu.contains(choice)) {
 				try {
-					System.out.println("Enter your choice of algorithms:\n1)Algo 1\n2)Algo 2\n3)Brute-Force\n");
+					System.out.println("Enter your choice of algorithms:\n1)Algo 1\n2)Algo 2\n3)Brute-Force\n4)All algos\n");
 					choice = sc.nextInt();
 				}
 				catch(Exception e) {
@@ -66,6 +67,25 @@ public class Main {
 				System.out.println("Run Brute Force");
 				System.out.printf("Your query is %s\n", query);
 				
+				positions = BruteForce.BFSearch(query, target);
+				System.out.println("The positions of the queried strings are:");
+				
+				for(Integer pos : positions) {
+					System.out.print(pos + " ");
+				}
+				System.out.println("");
+				break;
+			case 4:
+				System.out.println("Run Brute Force");
+				System.out.printf("Your query is %s\n", query);
+				
+				System.out.printf("========KMP ALGO========\n");
+				positions = KMP.KMPSearch(query, target);
+				System.out.println("The positions of the queried strings are:");
+				System.out.printf("========SH ALGO========\n");
+				positions = Super_Hash.search(query, target, 4);
+				System.out.println("The positions of the queried strings are:");
+				System.out.printf("========BF ALGO========\n");
 				positions = BruteForce.BFSearch(query, target);
 				System.out.println("The positions of the queried strings are:");
 				
