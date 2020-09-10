@@ -10,7 +10,6 @@ public class Double_Hash {
         int N = target.length(); 
         int M1, skip, k; 
         int i = 0;
-        int flag = 0;
         long thash1, thash2;
         ArrayList<Integer> indexpos = new ArrayList<Integer>();
         
@@ -37,7 +36,6 @@ public class Double_Hash {
     	    			if (thash1 == qhash1) {
     	    				thash2 = hash(target, i+M1 , i+M);				
     	    				if (thash2 == qhash2) {
-    	    					flag = 1;
     	    					indexpos.add(i+1); //Add 1 to index for position
     	    				}
     	    			}
@@ -56,10 +54,6 @@ public class Double_Hash {
     		}
     				
     		i += skip;
-        }
-        
-        if (flag==0) {
-        	System.out.println("Not found");
         }
         
         final long endTime = System.nanoTime(); // End timer

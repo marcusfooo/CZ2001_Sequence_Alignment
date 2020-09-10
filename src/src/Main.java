@@ -16,67 +16,88 @@ public class Main {
 		menu.add(1);
 		menu.add(2);
 		menu.add(3);
-		int choice = 0;
+		menu.add(4);
+		
 		
 		// User Menu
-		while(!menu.contains(choice)) {
-			try {
-				System.out.println("Enter your choice of algorithms:\n1)Algo 1\n2)Algo 2\n3)Brute-Force\n");
-				choice = sc.nextInt();
+		while(true) {
+			int choice = 0;
+			while(!menu.contains(choice)) {
+				try {
+					System.out.println("Enter your choice of algorithms:\n1)Algo 1\n2)Algo 2\n3)Brute-Force\n4)All algos\n");
+					choice = sc.nextInt();
+				}
+				catch(Exception e) {
+					sc.reset();
+					sc.next();
+					System.out.println("Please provide a valid Int input.");
+					continue;
+				}
+			}			
+			
+			String query = userQuery();		
+			String target = userTarget();
+					 
+			switch(choice) {
+			case 1:
+				System.out.println("Run Algo 1");
+				System.out.printf("Your query is %s\n", query);
+				
+				positions = KMP.KMPSearch(query, target);
+				System.out.println("The positions of the queried strings are:");
+				
+				for(Integer pos : positions) {
+					System.out.print(pos + " ");
+				}
+				System.out.println("");
+				break;
+			case 2:
+				System.out.println("Run Algo 2");
+				System.out.printf("Your query is %s\n", query);
+				
+				positions = Super_Hash.search(query, target, 3);
+				System.out.println("The positions of the queried strings are:");
+				
+				for(Integer pos : positions) {
+					System.out.print(pos + " ");
+				}
+				System.out.println("");
+				break;
+			case 3:
+				System.out.println("Run Brute Force");
+				System.out.printf("Your query is %s\n", query);
+				
+				positions = BruteForce.BFSearch(query, target);
+				System.out.println("The positions of the queried strings are:");
+				
+				for(Integer pos : positions) {
+					System.out.print(pos + " ");
+				}
+				System.out.println("");
+				break;
+			case 4:
+				System.out.println("Run Brute Force");
+				System.out.printf("Your query is %s\n", query);
+				
+				System.out.printf("========KMP ALGO========\n");
+				positions = KMP.KMPSearch(query, target);
+				System.out.println("The positions of the queried strings are:");
+				System.out.printf("========SH ALGO========\n");
+				positions = Super_Hash.search(query, target, 4);
+				System.out.println("The positions of the queried strings are:");
+				System.out.printf("========BF ALGO========\n");
+				positions = BruteForce.BFSearch(query, target);
+				System.out.println("The positions of the queried strings are:");
+				
+				for(Integer pos : positions) {
+					System.out.print(pos + " ");
+				}
+				System.out.println("");
+				break;
 			}
-			catch(Exception e) {
-				sc.reset();
-				sc.next();
-				System.out.println("Please provide a valid Int input.");
-				continue;
-			}
-		}			
-		
-		String query = userQuery();		
-		String target = userTarget();
-				 
-		switch(choice) {
-		case 1:
-			System.out.println("Run Algo 1");
-			System.out.printf("Your query is %s\n", query);
-			
-			positions = KMP.KMPSearch(query, target);
-			System.out.println("The positions of the queried strings are:");
-			
-			for(Integer pos : positions) {
-				System.out.print(pos + " ");
-			}
-			System.out.println("");
-			break;
-		case 2:
-			System.out.println("Run Algo 2");
-			System.out.printf("Your query is %s\n", query);
-			
-			positions = Double_Hash.DHSearch(query, target, 0);
-			System.out.println("The positions of the queried strings are:");
-			
-			for(Integer pos : positions) {
-				System.out.print(pos + " ");
-			}
-			System.out.println("");
-			break;
-		case 3:
-			System.out.println("Run Brute Force");
-			System.out.printf("Your query is %s\n", query);
-			
-			positions = BruteForce.BFSearch(query, target);
-			System.out.println("The positions of the queried strings are:");
-			
-			for(Integer pos : positions) {
-				System.out.print(pos + " ");
-			}
-			System.out.println("");
-			break;
+		}
 		}
 		
-		
-		sc.close();
-	}
 	
 	private static String userQuery() {
 		// Method for reading user input
