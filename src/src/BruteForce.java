@@ -6,8 +6,7 @@ public class BruteForce {
 	public static ArrayList<Integer> BFSearch(String query, String target) {
 		int x = query.length();
 		int y = target.length();
-		int count_x = 0; // count of comparison
-		int count_y = 0; // count of successful comparison
+		int count_x = 0; // count of successful comparison
 		
 		// Array list to store all index positions of substring
 		ArrayList<Integer> indexpos = new ArrayList<Integer>();
@@ -19,12 +18,10 @@ public class BruteForce {
 			j=0;
 			while (j<x) {
 				if (target.charAt(i+j) == query.charAt(j)) {
-					count_x++; 
-					count_y++;
+					count_x++;
 					j++;
 				}
 				else {
-					count_x++;
 					break;
 				}
 			}
@@ -36,8 +33,8 @@ public class BruteForce {
 		final long endTime = System.nanoTime(); // End timer
 		final long elapsedTime = (endTime - startTime)/1000;
 		System.out.printf("Time taken: %d microseconds\n", elapsedTime);
-		System.out.printf("Total no. of comparisons: %d\n", count_x);
-		System.out.printf("Total no. of successful comparisons: %d\n", count_y);
+		System.out.printf("Target search count: %d\n", y);
+		System.out.printf("Pattern match count: %d\n", count_x);
 		return indexpos;
 		
 	}
