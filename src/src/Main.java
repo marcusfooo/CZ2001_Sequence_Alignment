@@ -79,16 +79,23 @@ public class Main {
 				System.out.println("Run Brute Force");
 				System.out.printf("Your query is %s\n", query);
 				
-				System.out.printf("========KMP ALGO========\n");
+				System.out.printf("\n========KMP ALGO========\n");
 				positions = KMP.KMPSearch(query, target);
 				System.out.println("The positions of the queried strings are:");
-				System.out.printf("========SH ALGO========\n");
+				for(Integer pos : positions) {
+					System.out.print(pos + " ");
+				}
+				
+				System.out.printf("\n========SH ALGO========\n");
 				positions = Super_Hash.search(query, target, 4);
 				System.out.println("The positions of the queried strings are:");
-				System.out.printf("========BF ALGO========\n");
-				positions = BruteForce.BFSearch(query, target);
-				System.out.println("The positions of the queried strings are:");
+				for(Integer pos : positions) {
+					System.out.print(pos + " ");
+				}
 				
+				System.out.printf("\n========BF ALGO========\n");
+				positions = BruteForce.BFSearch(query, target);
+				System.out.println("The positions of the queried strings are:");				
 				for(Integer pos : positions) {
 					System.out.print(pos + " ");
 				}

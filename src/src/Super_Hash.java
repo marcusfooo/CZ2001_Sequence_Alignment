@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Super_Hash {
 	
+	// https://peerj.com/preprints/1758.pdf
 	public static ArrayList<Integer> search(String query, String target, int w) {
 		int m = query.length(); 
         int n = target.length();
@@ -36,7 +37,8 @@ public class Super_Hash {
 			key = hash(getWindow(temp, ptr, w, m), w);
 			skip = shift(hmap, key);
 			
-			while(skip!=0 && ptr<n-m) {
+			while(skip!=0) {
+				if(ptr+skip>n-m) break;
 				skip = shift(hmap, hash(getWindow(temp, ptr, w, m), w));
 				ptr += skip;
 			}
@@ -46,10 +48,20 @@ public class Super_Hash {
 			}
 			
 			if (hash(temp.substring(ptr, ptr+w), w) == qhash1) {
-				if (hash(temp.substring(ptr+w, ptr+m-w+1), w) == qhash2) {
-					indexpos.add(ptr+1);
-					ptr += suffixShift;
+				for(int j=0;j<m-w;j++) {
+					if(temp.charAt(ptr+j)==query.charAt(j)) {
+						if(j==m-w-1) {
+							indexpos.add(ptr+1);
+							ptr+=suffixShift;
+						}
+						continue;
+						
+					} else break;
 				}
+//				if (hash(temp.substring(ptr+w, ptr+m-w+1), w) == qhash2) {
+//					indexpos.add(ptr+1);
+//					ptr += suffixShift;
+//				}
 			}
 					
 			ptr += suffixShift;
@@ -70,8 +82,9 @@ public class Super_Hash {
 	
 	private static long hash(String str, int w) {
 		long hashVal = 0;
+		long seed = 131;
 		for(int i=0;i<w;i++) {
-			hashVal = (hashVal * 128 + str.charAt(i));
+			hashVal = (hashVal % seed + str.charAt(i));
 		}
 		
 		return hashVal;
