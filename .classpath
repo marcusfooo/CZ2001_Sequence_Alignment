@@ -6,7 +6,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Marcus/Desktop/Projects/CZ2001_Sequence_Alignment/libs/yrc-proteomics-fasta-utils-2.0.2.jar">
+	<classpathentry kind="lib" path="C:/Users/User/Documents/GitHub/CZ2001_Sequence_Alignment/libs/yrc-proteomics-fasta-utils-2.0.2.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
