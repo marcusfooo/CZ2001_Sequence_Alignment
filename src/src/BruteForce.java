@@ -19,7 +19,7 @@ public class BruteForce {
 			j=0;
 			while (j<x) {
 				if (target.charAt(i+j) == query.charAt(j)) {
-					count_x++;
+					count_x++; 
 					count_y++;
 					j++;
 				}
@@ -36,8 +36,8 @@ public class BruteForce {
 		final long endTime = System.nanoTime(); // End timer
 		final long elapsedTime = (endTime - startTime)/1000;
 		System.out.printf("Time taken: %d microseconds\n", elapsedTime);
-		System.out.printf("Total no. of comparison: %d\n", count_x);
-		System.out.printf("Total no. of successful comparison: %d\n", count_y);
+		System.out.printf("Total no. of comparisons: %d\n", count_x);
+		System.out.printf("Total no. of successful comparisons: %d\n", count_y);
 		return indexpos;
 		
 	}
