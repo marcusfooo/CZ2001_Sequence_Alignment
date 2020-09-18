@@ -12,12 +12,13 @@ public class Super_Hash {
 		long key;
 		int skip, suffixShift;
 		long qhash1 = hash(query.substring(0, w), w);
-		long qhash2 = hash(query.substring(w, m-w+1), w);
+		int count_x = 0;
+		int count_y = 0;
 		
 		ArrayList<Integer> indexpos = new ArrayList<Integer>();
 				
 		// Pre-processing bad shift table
-		char sentinel = query.charAt(0);
+		char sentinel = query.charAt(0); // Wanted to use sentinel as stopping char for other algos
 		String temp = target + sentinel;
 		HashMap<Long, Integer> hmap = Hash_Table(query, m, w);
 		String suffix = query.substring(m-w,m);
@@ -42,26 +43,25 @@ public class Super_Hash {
 				skip = shift(hmap, hash(getWindow(temp, ptr, w, m), w));
 				ptr += skip;
 			}
+			count_y++;
 				
 			if (ptr > n) {
 				break;
 			}
 			
 			if (hash(temp.substring(ptr, ptr+w), w) == qhash1) {
-				for(int j=0;j<m-w;j++) {
-					if(temp.charAt(ptr+j)==query.charAt(j)) {
-						if(j==m-w-1) {
-							indexpos.add(ptr+1);
-							ptr+=suffixShift;
-						}
-						continue;
-						
+				int j = 0;
+				while(j<m-w) {
+				if(temp.charAt(ptr+j)==query.charAt(j)) {
+					count_x++;
+					j++;						
 					} else break;
 				}
-//				if (hash(temp.substring(ptr+w, ptr+m-w+1), w) == qhash2) {
-//					indexpos.add(ptr+1);
-//					ptr += suffixShift;
-//				}
+				if (j==m-w) {
+					indexpos.add(ptr+1);
+					ptr += suffixShift;
+				}
+
 			}
 					
 			ptr += suffixShift;
@@ -71,6 +71,8 @@ public class Super_Hash {
         final long endTime = System.nanoTime(); // End timer
         final long elapsedTime = (endTime - startTime)/1000;
 		System.out.printf("Time taken: %d microseconds\n", elapsedTime);
+		System.out.printf("Target search count: %d\n", count_y);
+		System.out.printf("Pattern hit count: %d\n\n", count_x);
 		
         return indexpos;
 	}
@@ -84,7 +86,7 @@ public class Super_Hash {
 		long hashVal = 0;
 		long seed = 131;
 		for(int i=0;i<w;i++) {
-			hashVal = (hashVal % seed + str.charAt(i));
+			hashVal = (hashVal * seed + str.charAt(i));
 		}
 		
 		return hashVal;

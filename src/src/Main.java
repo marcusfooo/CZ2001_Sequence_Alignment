@@ -77,7 +77,7 @@ public class Main {
 				break;
 			case 4:
 				System.out.println("Run Brute Force");
-				System.out.printf("Your query is %s\n", query);
+				System.out.printf("Your query is %s", query);
 				
 				System.out.printf("\n========KMP ALGO========\n");
 				positions = KMP.KMPSearch(query, target);
@@ -146,15 +146,21 @@ public class Main {
 				
 		while(true) {
 			try {
+				final long startTime = System.currentTimeMillis();
 				System.out.println("Enter your Target file location");
 				String user_file = sc.nextLine();
 				String file_path =  "data/" + user_file;
 				FASTAFileParser parser = FASTAFileParserFactory.getInstance().getFASTAFileParser(new File(file_path));
-				for ( FASTAEntry entry = parser.getNextEntry(); entry != null;) {						
+				for ( FASTAEntry entry = parser.getNextEntry(); entry != null;) {
+					System.out.printf("\n=======================\n");
 					System.out.println( "Found " + entry.getHeaders().size() + " headers for this FASTA entry." );
+					final long endTime = System.currentTimeMillis(); // End timer
+			        final long elapsedTime = (endTime - startTime);
+					System.out.printf("Loaded data in %d milliseconds!\n\n", elapsedTime);
 					return entry.getSequence();
 										
 				}
+				
 
 
 			}
