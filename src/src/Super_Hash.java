@@ -50,7 +50,7 @@ public class Super_Hash {
 			}
 			
 			if (hash(temp.substring(ptr, ptr+w), w) == qhash1) {
-				int j = 0;
+				int j = w;
 				while(j<m-w) {
 				if(temp.charAt(ptr+j)==query.charAt(j)) {
 					count_x++;

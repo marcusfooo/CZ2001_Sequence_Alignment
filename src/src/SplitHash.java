@@ -2,7 +2,7 @@ package src;
 
 import java.util.ArrayList;
 
-public class Double_Hash {
+public class SplitHash {
 
 	// http://www.cs.csi.cuny.edu/~zhangx/papers/P_2019_LISAT_Bicer_Zhang.pdf
 	public static ArrayList<Integer> DHSearch(String query, String target, int include_u) {

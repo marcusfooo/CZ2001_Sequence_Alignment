@@ -7,6 +7,8 @@ import org.yeastrc.proteomics.fasta.*;
 
 public class Main {
 
+	static int w;
+	
 	private static Scanner sc = new Scanner(System.in);
 	
 	public static void main(String[] args) {
@@ -55,7 +57,8 @@ public class Main {
 				System.out.println("Run Algo 2");
 				System.out.printf("Your query is %s\n", query);
 				
-				positions = Super_Hash.search(query, target, 3);
+				w = getChoice();
+				positions = Super_Hash.search(query, target, w);
 				System.out.println("The positions of the queried strings are:");
 				
 				for(Integer pos : positions) {
@@ -76,6 +79,7 @@ public class Main {
 				System.out.println("");
 				break;
 			case 4:
+				w = getChoice();				
 				System.out.println("Run Brute Force");
 				System.out.printf("Your query is %s", query);
 				
@@ -87,7 +91,7 @@ public class Main {
 				}
 				
 				System.out.printf("\n========SH ALGO========\n");
-				positions = Super_Hash.search(query, target, 4);
+				positions = Super_Hash.search(query, target, w);
 				System.out.println("The positions of the queried strings are:");
 				for(Integer pos : positions) {
 					System.out.print(pos + " ");
@@ -151,18 +155,14 @@ public class Main {
 				String user_file = sc.nextLine();
 				String file_path =  "data/" + user_file;
 				FASTAFileParser parser = FASTAFileParserFactory.getInstance().getFASTAFileParser(new File(file_path));
-				for ( FASTAEntry entry = parser.getNextEntry(); entry != null;) {
-					System.out.printf("\n=======================\n");
-					System.out.println( "Found " + entry.getHeaders().size() + " headers for this FASTA entry." );
-					final long endTime = System.currentTimeMillis(); // End timer
-			        final long elapsedTime = (endTime - startTime);
-					System.out.printf("Loaded data in %d milliseconds!\n\n", elapsedTime);
-					return entry.getSequence();
-										
-				}
+				FASTAEntry entry = parser.getNextEntry();
 				
-
-
+				System.out.printf("\n=======================\n");
+				System.out.println( "Found " + entry.getHeaders().size() + " headers for this FASTA entry." );
+				final long endTime = System.currentTimeMillis(); // End timer
+		        final long elapsedTime = (endTime - startTime);
+				System.out.printf("Loaded data in %d milliseconds!\n\n", elapsedTime);
+				return entry.getSequence();										
 			}
 			catch(Exception e) {
 				System.out.println("Please provide a valid String input.");
@@ -170,7 +170,18 @@ public class Main {
 				continue;
 			}
 		}	
-		
+	
+	}
+	
+	private static int getChoice() {       
+	    while (true) {
+	        try { 
+	        	System.out.println("Enter a window size:\n");
+	            return Integer.valueOf(sc.nextLine());
+	        } catch (Exception e) {
+	            System.out.println("Enter a valid number\n");
+	        }
+	    }
 	}
 
 }
