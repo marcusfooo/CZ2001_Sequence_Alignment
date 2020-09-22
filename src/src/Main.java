@@ -45,7 +45,7 @@ public class Main {
 				System.out.println("Run Algo 1");
 				System.out.printf("Your query is %s\n", query);
 				
-				positions = KMP.KMPSearch(query, target);
+				positions = KMP_BM.KMPSearch(query, target);
 				System.out.println("The positions of the queried strings are:");
 				
 				for(Integer pos : positions) {
@@ -84,7 +84,7 @@ public class Main {
 				System.out.printf("Your query is %s", query);
 				
 				System.out.printf("\n========KMP ALGO========\n");
-				positions = KMP.KMPSearch(query, target);
+				positions = KMP_BM.KMPSearch(query, target);
 				System.out.println("The positions of the queried strings are:");
 				for(Integer pos : positions) {
 					System.out.print(pos + " ");
