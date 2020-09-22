@@ -3,12 +3,13 @@ package src;
 import java.util.*;
 
 public class KMP_BM{
-	
 	static int ALPHA = 256;	
+	
 	public static ArrayList<Integer> KMPSearch(String query, String target) {
 		int x = query.length();
 		int y = target.length();
 		int count_x = 0, count_y = 0; //count_x is pattern hit, count_y is search count
+		int[] nums2 = new int[ALPHA]; // array for bad match table
 		
 		// Array list to store all index positions of substring
 		ArrayList<Integer> indexpos = new ArrayList<Integer>();
@@ -16,7 +17,7 @@ public class KMP_BM{
 		int j = 0, i = 0, last = x-1, check = last;//j is index for query, i is index for target
 
 		int[] nums = preprocessKMP(query, x);
-		int[] nums2 =preprocessBM(query, x);
+		nums2 =preprocessBM(query, x);
 		
 		final long startTime = System.nanoTime(); // Start timer
 		while (check<y) {
@@ -43,7 +44,7 @@ public class KMP_BM{
 						return indexpos;
 					}
 				}
-				
+				j = 0;
 				i=check-last;
 				while ((j<last) && (target.charAt(i)==query.charAt(j))) {
 					count_x++;
@@ -69,11 +70,11 @@ public class KMP_BM{
 				if (j==x) {
 					indexpos.add(i-x+1);
 				}
-				j=nums[j];
+				j=nums[j-1];
 				count_y++;
 
 			}
-			check = i + last -j;
+			check = i +  last - j;
 		}
 		
 		final long endTime = System.nanoTime(); // End timer
@@ -135,10 +136,6 @@ public class KMP_BM{
 		// Value = length of substring – index of each letter in the substring – 1
 
 		int[] nums2 = new int[ALPHA];
-		/*for (int idx=0; idx< x; idx++) {
-			nums2[idx] = x - idx - 1;
-        }
-		nums2[x-1] = x;*/
 		for (int i = 0; i < ALPHA; i++) {
 			nums2[i] = x + 1;
 		}
