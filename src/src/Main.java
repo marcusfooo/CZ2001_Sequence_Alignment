@@ -58,7 +58,7 @@ public class Main {
 				System.out.printf("Your query is %s\n", query);
 				
 				w = getChoice();
-				positions = Super_Hash.search(query, target, w);
+				positions = SuperHash.search(query, target, w);
 				System.out.println("The positions of the queried strings are:");
 				
 				for(Integer pos : positions) {
@@ -91,7 +91,7 @@ public class Main {
 				}
 				
 				System.out.printf("\n========SH ALGO========\n");
-				positions = Super_Hash.search(query, target, w);
+				positions = SuperHash.search(query, target, w);
 				System.out.println("The positions of the queried strings are:");
 				for(Integer pos : positions) {
 					System.out.print(pos + " ");

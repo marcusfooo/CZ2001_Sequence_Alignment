@@ -2,7 +2,7 @@ package src;
 
 import java.util.*; 
 
-public class Super_Hash {
+public class SuperHash {
 	
 	// https://peerj.com/preprints/1758.pdf
 	public static ArrayList<Integer> search(String query, String target, int w) {
@@ -11,15 +11,14 @@ public class Super_Hash {
 		int ptr = 0;
 		long key;
 		int skip, suffixShift;
-		long qhash1 = hash(query.substring(0, w), w);
+		long qHead = hash(query.substring(0, w), w);
+		long qBody = hash(query.substring(m/3, m/3 + w), w);
 		int count_x = 0;
 		int count_y = 0;
 		
 		ArrayList<Integer> indexpos = new ArrayList<Integer>();
 				
 		// Pre-processing bad shift table
-		char sentinel = query.charAt(0); // Wanted to use sentinel as stopping char for other algos
-		String temp = target + sentinel;
 		HashMap<Long, Integer> hmap = Hash_Table(query, m, w);
 		String suffix = query.substring(m-w,m);
 		long suffix_key = hash(suffix, w);
@@ -35,12 +34,12 @@ public class Super_Hash {
 				
 		final long startTime = System.nanoTime(); // Start timer
 		while (ptr < n-m) {
-			key = hash(getWindow(temp, ptr, w, m), w);
+			key = hash(getWindow(target, ptr, w, m), w);
 			skip = shift(hmap, key);
 			
 			while(skip!=0) {
 				if(ptr+skip>n-m) break;
-				skip = shift(hmap, hash(getWindow(temp, ptr, w, m), w));
+				skip = shift(hmap, hash(getWindow(target, ptr, w, m), w));
 				ptr += skip;
 			}
 			count_y++;
@@ -49,18 +48,21 @@ public class Super_Hash {
 				break;
 			}
 			
-			if (hash(temp.substring(ptr, ptr+w), w) == qhash1) {
-				int j = w;
-				while(j<m-w) {
-				if(temp.charAt(ptr+j)==query.charAt(j)) {
-					count_x++;
-					j++;						
-					} else break;
+			if (hash(target.substring(ptr, ptr+w), w) == qHead) {
+				if (hash(target.substring(ptr+m/3, ptr+w+m/3), w) == qBody) {
+					int j = 0;
+					while(j<m) {
+					if(target.charAt(ptr+j)==query.charAt(j)) {
+						count_x++;
+						j++;						
+						} else break;
+					}
+					if (j==m) {
+						indexpos.add(ptr+1);
+						ptr += suffixShift;
+					}
 				}
-				if (j==m-w) {
-					indexpos.add(ptr+1);
-					ptr += suffixShift;
-				}
+				
 
 			}
 					
