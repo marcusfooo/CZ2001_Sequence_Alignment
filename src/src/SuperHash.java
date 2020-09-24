@@ -10,7 +10,6 @@ public class SuperHash {
         int n = target.length();
         int w = m/3;
 		int ptr = 0;
-		long key;
 		int skip, suffixShift;
 		long qHead = hash(query.substring(0, w), w);
 		long qBody = hash(query.substring(m/3, m/3 + w), w);
@@ -34,19 +33,13 @@ public class SuperHash {
 		}		
 				
 		final long startTime = System.nanoTime(); // Start timer
-		while (ptr < n-m) {
-			key = hash(getWindow(target, ptr, w, m), w);
-			skip = shift(hmap, key);
-			
+		while (ptr<n-m) {
+			skip = 1;		
 			while(skip!=0) {
 				if(ptr+skip>n-m) break;
 				skip = shift(hmap, hash(getWindow(target, ptr, w, m), w));
 				ptr += skip;
-			}
-			count_y++;
-				
-			if (ptr > n) {
-				break;
+				count_y++;
 			}
 			
 			if (hash(target.substring(ptr, ptr+w), w) == qHead) {
