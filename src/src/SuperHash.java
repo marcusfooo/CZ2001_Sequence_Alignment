@@ -33,36 +33,40 @@ public class SuperHash {
 		}		
 				
 		final long startTime = System.nanoTime(); // Start timer
-		while (ptr<n-m) {
-			skip = 1;		
-			while(skip!=0) {
-				if(ptr+skip>n-m) break;
-				skip = shift(hmap, hash(getWindow(target, ptr, w, m), w));
-				ptr += skip;
-				count_y++;
-			}
-			
-			if (hash(target.substring(ptr, ptr+w), w) == qHead) {
-				if (hash(target.substring(ptr+m/3, ptr+w+m/3), w) == qBody) {
-					int j = 0;
-					while(j<m) {
-					if(target.charAt(ptr+j)==query.charAt(j)) {
-						count_x++;
-						j++;						
-						} else break;
-					}
-					if (j==m) {
-						indexpos.add(ptr+1);
-						ptr += suffixShift;
-					}
+		try {
+			while (ptr<n-m) {
+				skip = 1;		
+				while(skip!=0) {
+					skip = shift(hmap, hash(getWindow(target, ptr, w, m), w));
+					ptr += skip;
+					count_y++;
 				}
 				
-
-			}
+				if (hash(target.substring(ptr, ptr+w), w) == qHead) {
+					if (hash(target.substring(ptr+m/3, ptr+w+m/3), w) == qBody) {
+						int j = 0;
+						while(j<m) {
+						if(target.charAt(ptr+j)==query.charAt(j)) {
+							count_x++;
+							j++;						
+							} else break;
+						}
+						if (j==m) {
+							indexpos.add(ptr+1);
+							ptr += suffixShift;
+						}
+					}
 					
-			ptr += suffixShift;
-			
+
+				}
+						
+				ptr += suffixShift;
+				
+			}
 		}
+		catch(Exception e) {
+		}
+		
         
         final long endTime = System.nanoTime(); // End timer
         final long elapsedTime = (endTime - startTime)/1000;
