@@ -57,8 +57,7 @@ public class Main {
 				System.out.println("Run Super Hash");
 				System.out.printf("Your query is %s\n", query);
 				
-				w = getChoice();
-				positions = SuperHash.search(query, target, w);
+				positions = SuperHash.search(query, target);
 				System.out.println("The positions of the queried strings are:");
 				
 				for(Integer pos : positions) {
@@ -79,7 +78,6 @@ public class Main {
 				System.out.println("");
 				break;
 			case 4:
-				w = getChoice();				
 				System.out.println("Run Brute Force");
 				System.out.printf("Your query is %s", query);
 				
@@ -91,7 +89,7 @@ public class Main {
 				}
 				
 				System.out.printf("\n========SH ALGO========\n");
-				positions = SuperHash.search(query, target, w);
+				positions = SuperHash.search(query, target);
 				System.out.println("The positions of the queried strings are:");
 				for(Integer pos : positions) {
 					System.out.print(pos + " ");
@@ -173,15 +171,16 @@ public class Main {
 	
 	}
 	
-	private static int getChoice() {       
-	    while (true) {
-	        try { 
-	        	System.out.println("Enter a window size:\n");
-	            return Integer.valueOf(sc.nextLine());
-	        } catch (Exception e) {
-	            System.out.println("Enter a valid number\n");
-	        }
-	    }
-	}
+	// Optional function for allowing user to manually input w
+//	private static int getChoice() {       
+//	    while (true) {
+//	        try { 
+//	        	System.out.println("Enter a window size:\n");
+//	            return Integer.valueOf(sc.nextLine());
+//	        } catch (Exception e) {
+//	            System.out.println("Enter a valid number\n");
+//	        }
+//	    }
+//	}
 
 }
