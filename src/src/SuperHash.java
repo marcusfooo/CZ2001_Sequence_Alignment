@@ -4,7 +4,6 @@ import java.util.*;
 
 public class SuperHash {
 	
-	// https://peerj.com/preprints/1758.pdf
 	public static ArrayList<Integer> search(String query, String target) {
 		int m = query.length(); 
         int n = target.length();
