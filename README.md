@@ -3,7 +3,7 @@ Super Hash is a self-developed hybrid algorithm which combines concepts from the
 
 Before a search, the tail, head and body windows are sequentially checked with the target before an actual character-character search is done. If the check fails at any of the 3 searches, the iteration fails, and the pointer is shifted by searching the hash table for a matching window, similar to searching for a bad character in BM. If no instances of the window are found, m-w characters can be safely skipped. In essence, the pointer perpetually stays in the skipping loop until it finds a target which has matching windows for the tail, head and body. Super Hash then does a character-character search instead of the hash-search method to ensure no inaccurate string matches are derived due to hash collisions. This considerably reduces the average-case search time as the probability of all 3 windows matching is extremely low, allowing the algorithm to skip through the majority of the target string.
 
-Super Hash has an average case time complexity of n/m, outperforming state-of-the-art searching algorithms in the average case
+Super Hash has an average case time complexity of n/m, outperforming state-of-the-art searching algorithms in the average case.
 
 Main.java contains the menu for algorithm selection, as well as times the algorithms.
 
